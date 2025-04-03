@@ -48,7 +48,7 @@ public class Interface {
                         break;
 
                     case 3:
-                        pesquisarFornecedor();
+                        pesquisar();
                         break;
 
                 }
@@ -57,6 +57,16 @@ public class Interface {
 
         }
 
+    }
+
+    private void pesquisar() {
+        Fornecedor fornecedor = pesquisarFornecedor();
+        if (fornecedor != null) {
+            String aux = "Fornecedor: " + fornecedor.getNome() + "\n";
+            aux += "CNPJ: " + fornecedor.getCnpj() + "\n";
+            showMessageDialog(null, aux);
+
+        }
     }
 
     public void cadastrarProduto() {
@@ -68,7 +78,7 @@ public class Interface {
             fornecedor = cadastrarFornecedor();
         }
 
-        nome = showInputDialog("Nome");
+        nome = showInputDialog("Produto");
         valor = parseDouble(showInputDialog("Valor unitario"));
         qtdEstoque = parseInt(showInputDialog("Quantidade em Estoque"));
         produto[indexProduto] = new Produto(nome, valor, qtdEstoque, fornecedor);
@@ -76,7 +86,7 @@ public class Interface {
     }
 
     public void pesquisarProduto() {
-       String nome = showInputDialog("Nome don produto");
+       String nome = showInputDialog("Nome do produto");
        String aux = "";
         DecimalFormat df = new DecimalFormat("0.00");
        for (int i = 0; i < indexProduto; i++) {
@@ -117,6 +127,7 @@ public class Interface {
         }
         return f;
     }
+
 
 
 }
